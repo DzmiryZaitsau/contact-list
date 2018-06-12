@@ -6,12 +6,12 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
+
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css">
 
     <title>
-        Phones Book
+        <s:message code="application.title"/>
     </title>
 </head>
 <body>
@@ -21,17 +21,16 @@
             <table>
                 <div class="dataFrame shortFrame">
                     <h1>
-                        Save Contact
+                        <s:message code="contactListPage.saveContactForm.title"/>
                     </h1>
 
                     <spring:form action="save-phones-book.html" method="post" modelAttribute="contact">
-
-                        Name:
+                        <s:message code="contactListPage.saveContactForm.name.label"/>
                         <br/>
                         <spring:input path="name"/>
                         <br/>
                         <br/>
-                        Number:
+                        <s:message code="contactListPage.saveContactForm.number.label"/>
                         <br/>
                         <spring:input path="number"/>
                         <br/>
@@ -47,16 +46,16 @@
 
 <div class="dataFrame largeFrame">
     <h1>
-        Contacts List
+        <s:message code="contactListPage.header.title"/>
     </h1>
 
     <table border="1" class="dataTable">
         <tr>
             <th class="dataColl">
-                Name
+                <s:message code="contactListPage.ContactGrid.name.header"/>
             </th>
             <th class="dataColl">
-                Number
+                <s:message code="contactListPage.ContactGrid.number.header"/>
             </th>
         </tr>
 
