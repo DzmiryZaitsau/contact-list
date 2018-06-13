@@ -6,7 +6,7 @@
 
 <html>
 <head>
-
+    <meta charset="utf-8">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" type="text/css">
 
@@ -21,21 +21,49 @@
             <table>
                 <div class="dataFrame shortFrame">
                     <h1>
+                        <s:message code="contactListPage.searchContactsForm.title"/>
+                    </h1>
+
+
+                    <spring:form action="search-contacts.html" method="post" >
+                        <s:message code="contactListPage.searchContactsForm.name.label"/>
+                        <br/>
+                        <p><input type="search" name="letters" placeholder=<s:message code="contactListPage.searchContactsForm.title"/>></p>
+
+                        <br/>
+                        <br/>
+                        <input type="submit" name="search_btn" value="<s:message code="common.buttons.search" />"/>
+
+                    </spring:form>
+
+
+                </div>
+            </table>
+        </td>
+
+        <td>
+            <table>
+                <div class="dataFrame shortFrame">
+                    <h1>
                         <s:message code="contactListPage.saveContactForm.title"/>
                     </h1>
 
                     <spring:form action="save-phones-book.html" method="post" modelAttribute="contact">
+
                         <s:message code="contactListPage.saveContactForm.name.label"/>
                         <br/>
                         <spring:input path="name"/>
+
                         <br/>
                         <br/>
+
                         <s:message code="contactListPage.saveContactForm.number.label"/>
                         <br/>
                         <spring:input path="number"/>
+
                         <br/>
                         <br/>
-                        <input type="submit" name="save_btn" value="Save"/>
+                        <input type="submit" name="login_btn" value="<s:message code="common.buttons.save" />"/>
 
                     </spring:form>
                 </div>
@@ -43,7 +71,6 @@
         </td>
     </tr>
 </table>
-
 <div class="dataFrame largeFrame">
     <h1>
         <s:message code="contactListPage.header.title"/>
@@ -57,6 +84,9 @@
             <th class="dataColl">
                 <s:message code="contactListPage.ContactGrid.number.header"/>
             </th>
+            <th class="dataColl">
+                <s:message code="grid.common.actions.header"/>
+            </th>
         </tr>
 
         <c:forEach items="${contactList}" var="contact">
@@ -66,6 +96,26 @@
                 </td>
                 <td class="dataColl">
                         ${contact.number}
+                </td>
+
+                <td class="actionsColl dataColl">
+                    <c:url value="edit-phones-book.html" var="edit_url">
+                        <c:param name="contact_id" value="${contact.id}"/>
+                    </c:url>
+
+                    <a href="${edit_url}">
+                        <s:message code="grid.common.actions.editAction"/>
+                    </a>
+
+                    &nbsp;&nbsp;
+
+                    <c:url value="delete-phones-book.html" var="delete_url">
+                        <c:param name="contact_id" value="${contact.id}"/>
+                    </c:url>
+
+                    <a href="${delete_url}">
+                        <s:message code="grid.common.actions.deleteAction"/>
+                    </a>
                 </td>
             </tr>
         </c:forEach>

@@ -38,5 +38,15 @@ public class ContactServiceImpl implements ContactService {
         return userRepository.findByUsername(username);
     }
 
+    @Override
+    public Contact getContactById(Long contactId) {
+        return contactRepository.findById(contactId).orElse(new Contact());
+    }
+
+    @Override
+    public void deleteContact(Long contactId) {
+        contactRepository.deleteById(contactId);
+    }
+
 
 }
